@@ -1,0 +1,7 @@
+http://13.212.210.127:8000/nps-responses
+http://13.212.210.127:8000/campaign-details
+http://13.212.210.127:8000/campaign-performance
+http://13.212.210.127:8000/sales-seasonality
+http://13.212.210.127:8000/customer-campaign
+http://13.212.210.127:8000/callcenter
+http://13.212.210.127:8000/customer-complaints
