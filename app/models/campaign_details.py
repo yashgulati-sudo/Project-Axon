@@ -23,7 +23,7 @@ def generate_campaign_details():
     end_date = min(end_date, datetime.today())
 
     campaign = {
-        "CampaignID": str(uuid.uuid4()),
+        "CampaignID": random.randint(1, 100),
         "CampaignName": f"{faker.company()} Loan Offer",
         "StartDate": start_date.strftime('%Y-%m-%d'),
         "EndDate": end_date.strftime('%Y-%m-%d'),
@@ -66,9 +66,9 @@ def generate_customer_campaign():
     enrolled_at = max(enrolled_at, datetime(datetime.today().year, 1, 1))  # Ensure it's within this year
 
     customer_campaign = {
-        "customer_campaign_id": random.randint(1000, 9999),
-        "customer_id": random.randint(1, 99999),
-        "campaign_id": random.randint(1000, 9999),
+        "customer_campaign_id": random.randint(1, 99),
+        "customer_id": random.randint(1, 99),
+        "campaign_id": random.randint(1, 99),
         "enrolled_at": enrolled_at.strftime('%Y-%m-%d')
     }
     return customer_campaign
