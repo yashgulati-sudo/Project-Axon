@@ -30,14 +30,16 @@ def generate_call_center_interaction():
 # Function to generate Customer Complaint dummy data
 # Function to generate Customer Complaint dummy data
 def generate_customer_complaint():
-    complaint_date = random_date()
+    # Generate a valid complaint date between 2019 and today
+    complaint_date = random_date(datetime(2019, 1, 1), datetime.today())
+
     resolution_start = complaint_date + timedelta(days=random.randint(1, 10))
     resolution_end = resolution_start + timedelta(days=random.randint(1, 20))
-    
+
     # Ensure resolution dates do not go beyond today
     resolution_start = min(resolution_start, datetime.today())
     resolution_end = min(resolution_end, datetime.today())
-    
+
     resolution_time = (resolution_end - resolution_start).days if resolution_end else None
 
     complaint = {

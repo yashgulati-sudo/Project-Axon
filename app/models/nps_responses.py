@@ -37,13 +37,13 @@ def generate_nps_responses():
 
     # Generate unique ResponseID and CustomerID
     while True:
-        response_id = str(uuid.uuid4())
+        response_id = random.randint(100000, 999999)
         if response_id not in ids["ResponseIDs"]:
             ids["ResponseIDs"].append(response_id)
             break
 
     while True:
-        customer_id = str(uuid.uuid4())
+        customer_id = faker.random_int(min=1, max=99999)
         if customer_id not in ids["CustomerIDs"]:
             ids["CustomerIDs"].append(customer_id)
             break
