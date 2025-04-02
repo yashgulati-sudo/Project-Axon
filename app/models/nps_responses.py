@@ -23,8 +23,10 @@ def save_generated_ids(ids):
         json.dump(ids, f)
 
 # Function to generate a random date between two dates
-def random_date(start_date, end_date):
-    delta = end_date - start_date
+def random_date(start_year=2019):
+    current_date = datetime.today()
+    start_date = datetime(start_year, 1, 1)
+    delta = current_date - start_date
     random_days = random.randint(0, delta.days)
     return (start_date + timedelta(days=random_days)).strftime('%Y-%m-%d')
 
@@ -56,11 +58,12 @@ def generate_nps_responses():
     response = {
         "ResponseID": response_id,
         "CustomerID": customer_id,
-        "SurveyDate": random_date(datetime.today() - timedelta(days=730), datetime.today()),  # Random survey date
+        "SurveyDate": random_date(2019),  # Ensures date is between 2019 and today
         "Score": score,
-        "Comment": faker.sentence(),  # Random comment related to banking services
+        "Comment": faker.sentence(),
         "SatisfactionLevel": "Promoter" if score >= 9 else "Passive" if score >= 7 else "Detractor",
-        "SurveyChannel": random.choice(["Email", "SMS", "Phone", "Online Banking"])  # Random survey channel
+        "SurveyChannel": random.choice(["Email", "SMS", "Phone", "Online Banking"])
     }
+
 
     return response
