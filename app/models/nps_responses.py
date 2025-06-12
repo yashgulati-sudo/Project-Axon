@@ -1,26 +1,8 @@
 from faker import Faker
-import random, json
-import uuid
+import random
 from datetime import datetime, timedelta
-import os
 
 faker = Faker()
-
-# File path to store generated IDs
-file_path = 'generated_ids.json'
-
-# Function to load the generated IDs from the JSON file
-def load_generated_ids():
-    if os.path.exists(file_path):
-        with open(file_path, 'r') as f:
-            return json.load(f)
-    else:
-        return {"ResponseIDs": [], "CustomerIDs": []}
-
-# Function to save the updated IDs to the JSON file
-def save_generated_ids(ids):
-    with open(file_path, 'w') as f:
-        json.dump(ids, f)
 
 # Function to generate a random date between two dates
 def random_date(start_year=2019):
@@ -32,38 +14,14 @@ def random_date(start_year=2019):
 
 # Function to generate dummy data for NPS Responses table
 def generate_nps_responses():
-    # Load existing IDs
-    ids = load_generated_ids()
-
-    # Generate unique ResponseID and CustomerID
-    while True:
-        response_id = random.randint(1, 99)
-        if response_id not in ids["ResponseIDs"]:
-            ids["ResponseIDs"].append(response_id)
-            break
-
-    while True:
-        customer_id = faker.random_int(min=1, max=99)
-        if customer_id not in ids["CustomerIDs"]:
-            ids["CustomerIDs"].append(customer_id)
-            break
-
-    # Save updated IDs to JSON file
-    save_generated_ids(ids)
-
-    # Generate a random score
     score = random.randint(0, 10)
-
-    # Generate the response data
     response = {
-        "ResponseID": response_id,
-        "CustomerID": customer_id,
-        "SurveyDate": random_date(2019),  # Ensures date is between 2019 and today
+        "ResponseID": random.randint(1, 99),
+        "CustomerID": random.randint(1, 99),
+        "SurveyDate": random_date(2019),
         "Score": score,
         "Comment": faker.sentence(),
         "SatisfactionLevel": "Promoter" if score >= 9 else "Passive" if score >= 7 else "Detractor",
         "SurveyChannel": random.choice(["Email", "SMS", "Phone", "Online Banking"])
     }
-
-
     return response

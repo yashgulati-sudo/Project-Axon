@@ -18,8 +18,8 @@ def generate_call_center_interaction():
         "InteractionID": faker.random_int(min=1, max=99),
         "CustomerID": faker.random_int(min=1, max=99),
         "AgentID": faker.random_int(min=1, max=99),
-        "InteractionTime": faker.date_time_this_year().isoformat(),  # Random timestamp this year
-        "InteractionDate": faker.date_this_year().isoformat(),  # Random date this year
+        "InteractionTime": faker.date_time_this_year().isoformat(),
+        "InteractionDate": faker.date_this_year().isoformat(), 
         "CallType": random.choice(["Complaint", "Inquiry", "Request"]),
         "Duration": random.randint(1, 60),  # Call duration in minutes
         "SatisfactionRating": random.randint(1, 5),  # Satisfaction rating (1-5)
