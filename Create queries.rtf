@@ -133,7 +133,367 @@ CREATE EXTERNAL TABLE customer_campaign (\
   enrolled_at STRING\
 )\
 STORED AS PARQUET\
-LOCATION 's3a://project-axon-buk-364703ca/user/ygulati/MCL/customer_campaign/';\
-\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 LOCATION 'hdfs:///Axon-Files/customer-campaign';\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
 select * from customer_campaign;\
-DESCRIBE FORMATTED customer_campaign;}
+DESCRIBE FORMATTED customer_campaign;\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b \cf0 Database - Callcenter_data\
+Table - callcenter_interaction\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b0 \cf0 DROP TABLE IF EXISTS callcenter_interaction;\
+CREATE EXTERNAL TABLE callcenter_interaction (\
+  InteractionID INT,\
+  CustomerID INT,\
+  AgentID INT,\
+  InteractionTime STRING,\
+  InteractionDate STRING,\
+  CallType STRING,\
+  Duration INT,\
+  SatisfactionRating INT,\
+  IssueResolved STRING\
+)\
+STORED AS PARQUET\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 LOCATION 'hdfs:///Axon-Files/callcenter';\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+select * from callcenter_interaction;\
+\
+Database - FRS\
+Table - revenue_data\
+DROP TABLE IF EXISTS revenue_data;\
+\
+CREATE EXTERNAL TABLE revenue_data (\
+  RevenueID STRING,\
+  BranchID STRING,\
+  Record_Date STRING,\
+  RevenueType STRING,\
+  Amount DOUBLE,\
+  Description STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/FRS-data/revenue';\
+\
+select * from revenue_data;\
+\
+Table- expense_data\
+\
+DROP TABLE IF EXISTS expense_data;\
+\
+CREATE EXTERNAL TABLE expense_data (\
+  ExpenseID INT,\
+  BranchID INT,\
+  Record_Date STRING,\
+  ExpenseType STRING,\
+  Amount DOUBLE,\
+  Description STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/FRS-data/expense';\
+\
+Table - profitnloss\
+\
+DROP TABLE IF EXISTS pnl_data;\
+\
+CREATE EXTERNAL TABLE pnl_data (\
+  PnLID STRING,\
+  BranchID INT,\
+  Record_Date STRING,\
+  TotalRevenue DOUBLE,\
+  TotalExpense DOUBLE,\
+  NetProfitLoss DOUBLE,\
+  ProfitMargin DOUBLE\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/FRS-data/profitnloss';\
+\
+Table - cashflow\
+\
+DROP TABLE IF EXISTS cashflow_data;\
+\
+CREATE EXTERNAL TABLE cashflow_data (\
+  CashFlowID STRING,\
+  BranchID INT,\
+  Record_Date STRING,\
+  CashInflow DOUBLE,\
+  CashOutflow DOUBLE,\
+  NetCashFlow DOUBLE,\
+  OperatingCashFlow DOUBLE,\
+  InvestingCashFlow DOUBLE,\
+  FinancingCashFlow DOUBLE\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/FRS-data/cashflow';\
+\
+\
+Database: CBS\
+Table: customer\
+\
+DROP TABLE IF EXISTS customer;\
+\
+CREATE EXTERNAL TABLE customer (\
+  customer_id INT,\
+  first_name STRING,\
+  last_name STRING,\
+  email STRING,\
+  phone STRING,\
+  dob STRING,\
+  address STRING,\
+  city STRING,\
+  state STRING,\
+  postal_code STRING,\
+  country STRING,\
+  gender STRING,\
+  kyc_status STRING,\
+  customer_type STRING,\
+  relationship_manager_id INT,\
+  customer_status STRING,\
+  source STRING,\
+  created_at STRING,\
+  updated_at STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/CBS/customer';\
+\
+\
+Table: account\
+DROP TABLE IF EXISTS account;\
+\
+CREATE EXTERNAL TABLE account (\
+  account_id INT,\
+  account_number INT,\
+  customer_id INT,\
+  account_type STRING,\
+  balance DOUBLE,\
+  interest_rate DOUBLE,\
+  branch_id INT,\
+  currency_type STRING,\
+  account_status STRING,\
+  last_transaction_date STRING,\
+  created_at STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/CBS/account';\
+\
+Table: transaction\
+\
+DROP TABLE IF EXISTS transaction;\
+\
+CREATE EXTERNAL TABLE transaction (\
+  transaction_id INT,\
+  account_number INT,\
+  transaction_type STRING,\
+  amount DOUBLE,\
+  transaction_date STRING,\
+  branch_id INT,\
+  transaction_reference_id STRING,\
+  currency_type STRING,\
+  transaction_mode STRING,\
+  transaction_status STRING,\
+  transaction_due_date STRING,\
+  description STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/CBS/transaction';\
+\
+Table: feedback\
+\
+DROP TABLE IF EXISTS feedback;\
+\
+CREATE EXTERNAL TABLE feedback (\
+  feedback_id INT,\
+  customer_id INT,\
+  branch_id INT,\
+  feedback_date STRING,\
+  feedback_type STRING,\
+  feedback_rating INT,\
+  feedback_status STRING,\
+  feedback_comment STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/CBS/feedback';\
+\
+Database: HRMS\
+Table: Employee\
+\
+DROP TABLE IF EXISTS hrms_employee;\
+\
+CREATE EXTERNAL TABLE hrms_employee (\
+  employee_id INT,\
+  first_name STRING,\
+  last_name STRING,\
+  email STRING,\
+  phone STRING,\
+  department STRING,\
+  position STRING,\
+  hire_date STRING,\
+  salary DOUBLE,\
+  employee_status STRING,\
+  branch_id INT,\
+  created_at STRING,\
+  updated_at STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/HRMS/employee';\
+\
+Table: attendance\
+\
+DROP TABLE IF EXISTS hrms_attendance;\
+\
+CREATE EXTERNAL TABLE hrms_attendance (\
+  attendance_id INT,\
+  employee_id INT,\
+  attendance_date STRING,\
+  attendance_status STRING,\
+  created_at STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/HRMS/attendance';\
+\
+Table: performance\
+\
+DROP TABLE IF EXISTS hrms_performance;\
+\
+CREATE EXTERNAL TABLE hrms_performance (\
+  performance_id INT,\
+  employee_id INT,\
+  performance_rating INT,\
+  review_date STRING,\
+  comments STRING,\
+  created_at STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/HRMS/performance';\
+\
+Table: time tracking\
+\
+DROP TABLE IF EXISTS timetracking;\
+\
+CREATE EXTERNAL TABLE timetracking (\
+  time_tracking_id INT,\
+  employee_id INT,\
+  tracking_date STRING,\
+  hours_worked DOUBLE,\
+  overtime_hours DOUBLE,\
+  time_tracking_status STRING,\
+  created_at STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/HRMS/timetracking';\
+\
+Database: branch_management_db\
+Table: branches\
+\
+DROP TABLE IF EXISTS branches;\
+\
+CREATE EXTERNAL TABLE branches (\
+  branch_id INT,\
+  branch_name STRING,\
+  location STRING,\
+  region STRING,\
+  manager_id STRING,\
+  IFSCCode STRING,\
+  established_date STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/BMS/branches';\
+\
+Table: inventory\
+\
+DROP TABLE IF EXISTS inventory;\
+\
+CREATE EXTERNAL TABLE inventory (\
+  inventory_id STRING,\
+  branch_id INT,\
+  product_id STRING,\
+  product_name STRING,\
+  status STRING,\
+  stock_quantity INT,\
+  unit_price DOUBLE,\
+  stock_value DOUBLE\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/BMS/inventory';\
+\
+Table: assets\
+\
+DROP TABLE IF EXISTS assets;\
+\
+CREATE EXTERNAL TABLE assets (\
+  asset_id STRING,\
+  asset_type STRING,\
+  branch_id INT,\
+  location STRING,\
+  purchase_date STRING,\
+  status STRING,\
+  stock_value DOUBLE\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/BMS/assets';\
+\
+Table: daily_operations\
+\
+DROP TABLE IF EXISTS daily_operations;\
+\
+DROP TABLE IF EXISTS daily_operations;\
+\
+CREATE EXTERNAL TABLE IF NOT EXISTS daily_operations (\
+  operation_id STRING,\
+  branch_id INT,\
+  operation_date STRING,\
+  customers_served INT,\
+  transactions_processed INT,\
+  staff_count INT,\
+  operational_cost DOUBLE\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/BMS/operations';\
+\
+Database: Task Management db\
+Table: tasks\
+\
+DROP TABLE IF EXISTS tasks;\
+\
+CREATE EXTERNAL TABLE tasks (\
+  task_id INT,\
+  task_name STRING,\
+  branch_id INT,\
+  project_id INT,\
+  assigned_to INT,\
+  status STRING,\
+  priority STRING,\
+  due_date STRING,\
+  created_at STRING,\
+  updated_at STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/TMS/tasks';\
+\
+\
+Database: footfalldb\
+Table: footfallsummaryy\
+\
+DROP TABLE IF EXISTS footfallsummary;\
+\
+CREATE EXTERNAL TABLE footfallsummaryy (\
+  SummaryID INT,\
+  BranchID INT,\
+  Record_Date STRING,\
+  TotalFootfall INT,\
+  TotalExit INT,\
+  NetFootfall INT,\
+  PeakHour STRING,\
+  OffPeakHour STRING\
+)\
+STORED AS PARQUET\
+LOCATION 'hdfs:///Axon-Files/FRS/summary/';\
+\
+\
+}
