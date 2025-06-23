@@ -22,6 +22,9 @@ This use case helps simulate and analyze the operational performance of various 
 Before running the project, ensure the following components are installed:
 
 === On the Dummy Data Generator Host:
+You can clone and run this dummy generator app on **any of the base cluster servers** you have access to.  
+Just make sure the following ports are open on the server firewall/security groups:  
+**8000, 8085, 5001, 5003, 5400, 5500**
 [source,shell]
 ----
 sudo yum install -y python3
@@ -69,10 +72,6 @@ image::../images/project_flow.png[project_flow]
 == Steps to Run
 
 === 1. Clone the Dummy Data Generator Repository
-
-You can clone and run this dummy generator app on **any of the base cluster servers** you have access to.  
-Just make sure the following ports are open on the server firewall/security groups:  
-**8000, 8085, 5001, 5003, 5400, 5500**
 
 [source,shell]
 ----
