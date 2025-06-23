@@ -26,9 +26,11 @@ Before running the project, ensure the following components are installed:
 ----
 sudo yum install -y python3
 python3 -m ensurepip --upgrade
-pip install Flask
-pip install Faker
+pip3 install Flask
+pip3 install Faker
 python3 -m flask --version
+pip3 install uvicorn
+pip3 install fastapi
 ----
 
 === Cloudera Platform Requirements:
