@@ -43,6 +43,15 @@ You should have a **Cloudera Private Cloud Base cluster** running with the follo
 - Impala  
 - Apache Knox
 
+This project was developed and tested on the following component versions:
+
+- **Cloudera Manager**: 7.11.3-CHF11  
+- **CDP Base Runtime (CDH parcel)**: 7.1.9 SP1 CHF4  
+- **Java**: 17.0.15  
+- **Cloudera Flow Management (CFM)**: 2.1.7.2002-3  
+- **Apache NiFi**: 1.28.1  
+- **Cloudera DataViz**: 8.0.4-b47.p1.67141340
+
 == Technology Stack
 
 - **Data Generator**: Python (Flask + Faker)
@@ -59,6 +68,10 @@ image::../images/project_flow.png[project_flow]
 
 === 1. Clone the Dummy Data Generator Repository
 
+You can clone and run this dummy generator app on **any of the base cluster servers** you have access to.  
+Just make sure the following ports are open on the server firewall/security groups:  
+**8000, 8085, 5001, 5003, 5400, 5500**
+
 [source,shell]
 ----
 git clone https://github.com/yashgulati-sudo/Project-Axon.git
@@ -69,7 +82,7 @@ cd Project-Axon/Project-Axon-Data
 === 2. Configuration on `NiFi Registry` UI
 
 .. Login to the `NiFi Registry` UI.
-.. Create a new bucket (for example, name it `Axon-Flow`).
+.. Create a new bucket (for example, name it `Axon-Files`).
 ... Click on the wrench `🔧` icon on the top right corner to open settings.
 +
 image::../images/settings.png[settings]
@@ -145,22 +158,24 @@ image::../images/keytab.png[keytab credentials]
 
 Go to Hue → Query Editor → Hive and run a sample query for one dataset (e.g., branches):
 
+You can use the pre-written queries available in the `create_queries.txt` file located in the cloned folder.
+For example, to create the `bank_branches` table:
 [source,sql]
 ----
-CREATE EXTERNAL TABLE bank_branches (
+CREATE EXTERNAL TABLE branches (
   branch_id INT,
   branch_name STRING,
   location STRING,
   region STRING,
   manager_id STRING,
   IFSCCode STRING,
-  EstablishedDate DATE
+  established_date STRING
 )
 STORED AS PARQUET
-LOCATION '/Axon-Files/branches/';
+LOCATION '/Axon-Files/BMS/branches/';
 ----
 
-Repeat similar steps for the other datasets.
+Repeat similar steps for the other datasets using the queries from the file.
 
 === 6. Import Dashboard into DataViz
 
@@ -175,4 +190,4 @@ image::../images/dashboard.png[dashboard]
 
 == Contact
 
-For questions, feedback, or demo support, please reach out to **Yash Gulati** or the **Partner Solutions Engineering** team at Cloudera.
+For questions, feedback, or demo support, please reach out to the **Partner Solutions Engineering** team at Cloudera.
