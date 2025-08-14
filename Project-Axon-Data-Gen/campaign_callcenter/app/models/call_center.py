@@ -15,9 +15,9 @@ def random_date(start_date, end_date):
 def generate_call_center_interaction():
     # Generate a single call center interaction instead of two
     interaction = {
-        "InteractionID": faker.random_int(min=1, max=99),
-        "CustomerID": faker.random_int(min=1, max=99),
-        "AgentID": faker.random_int(min=1, max=99),
+        "InteractionID": faker.random_int(min=1, max=40),
+        "CustomerID": faker.random_int(min=1, max=40),
+        "AgentID": faker.random_int(min=1, max=40),
         "InteractionTime": faker.date_time_this_year().isoformat(),
         "InteractionDate": faker.date_this_year().isoformat(), 
         "CallType": random.choice(["Complaint", "Inquiry", "Request"]),
@@ -43,8 +43,8 @@ def generate_customer_complaint():
     resolution_time = (resolution_end - resolution_start).days if resolution_end else None
 
     complaint = {
-        "ComplaintID": faker.random_int(min=1, max=99),
-        "CustomerID": faker.random_int(min=1, max=99),
+        "ComplaintID": faker.random_int(min=1, max=40),
+        "CustomerID": faker.random_int(min=1, max=40),
         "ComplaintDate": complaint_date.date().isoformat(),
         "ComplaintType": random.choice(["Service", "Product", "Billing"]),
         "ComplaintStatus": random.choice(["Pending", "Resolved"]),

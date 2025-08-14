@@ -6,7 +6,7 @@ fake = Faker()
 
 class CBSCustomer:
     def __init__(self):
-        self.customer_id = fake.random_int(min=1, max=99)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.first_name = fake.first_name()
         self.last_name = fake.last_name()
         self.email = fake.email()
@@ -31,13 +31,13 @@ class CBSCustomer:
 
 class CBSAccount:
     def __init__(self):
-        self.account_id = fake.random_int(min=1, max=99)
-        self.account_number = fake.random_int(min=1, max=99)
-        self.customer_id = fake.random_int(min=1, max=99)
+        self.account_id = fake.random_int(min=1, max=40)
+        self.account_number = fake.random_int(min=1, max=40)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.account_type = random.choice(['Savings', 'Current', 'Fixed Deposit'])
         self.balance = round(random.uniform(500, 50000000), 2)
         self.interest_rate = round(random.uniform(0.5, 5.0), 2)
-        self.branch_id = fake.random_int(min=1, max=99)
+        self.branch_id = fake.random_int(min=1, max=40)
         self.currency_type = random.choice(['USD', 'EUR', 'INR', 'GBP'])
         self.account_status = random.choice(['Active', 'Dormant', 'Closed'])
         self.last_transaction_date = fake.date_time_this_month().strftime("%Y-%m-%d %H:%M:%S")
@@ -53,7 +53,7 @@ class CBSTransaction:
         self.transaction_type = random.choice(['Credit', 'Debit', 'Deposit', 'Withdrawal'])
         self.amount = round(random.uniform(10, 500000000), 2)
         self.transaction_date = fake.date_time_this_month().strftime("%Y-%m-%d %H:%M:%S")
-        self.branch_id = fake.random_int(min=1, max=99)
+        self.branch_id = fake.random_int(min=1, max=40)
         self.transaction_reference_id = fake.uuid4()
         self.currency_type = random.choice(['USD', 'EUR', 'INR', 'GBP'])
         self.transaction_mode = random.choice(['Online', 'ATM', 'Cheque', 'Cash', 'Credit Card', 'Bank Transfer', 'UPI', 'RTGS'])
@@ -66,8 +66,8 @@ class CBSTransaction:
 
 class CBSLoan:
     def __init__(self):
-        self.loan_id = fake.random_int(min=1, max=99)
-        self.customer_id = fake.random_int(min=1, max=99)
+        self.loan_id = fake.random_int(min=1, max=40)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.loan_type = random.choice(['Home Loan', 'Personal Loan', 'Car Loan'])
         self.principal_amount = round(random.uniform(1000, 50000000), 2)
         self.interest_rate = round(random.uniform(1.5, 12.0), 2)
@@ -83,9 +83,9 @@ class CBSLoan:
 
 class CBSFeedback:
     def __init__(self):
-        self.feedback_id = fake.random_int(min=1, max=99)
-        self.customer_id = fake.random_int(min=1, max=99)
-        self.branch_id = fake.random_int(min=1, max=99)
+        self.feedback_id = fake.random_int(min=1, max=40)
+        self.customer_id = fake.random_int(min=1, max=40)
+        self.branch_id = fake.random_int(min=1, max=40)
         self.feedback_date = fake.date_time_this_month().strftime("%Y-%m-%d %H:%M:%S")
         self.feedback_type = random.choice(['Complaint', 'Praise', 'Suggestion'])
         self.feedback_rating = random.randint(1, 5)

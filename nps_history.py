@@ -33,8 +33,8 @@ def generate_unique_nps_response():
     
     while True:
         # Generate unique ResponseID and CustomerID
-        response_id = random.randint(1, 99)
-        customer_id = faker.random_int(min=1, max=99)
+        response_id = random.randint(1, 40)
+        customer_id = faker.random_int(min=1, max=40)
         
         # If the ResponseID has been generated before, regenerate it
         if response_id in history.get("ResponseIDs", []):

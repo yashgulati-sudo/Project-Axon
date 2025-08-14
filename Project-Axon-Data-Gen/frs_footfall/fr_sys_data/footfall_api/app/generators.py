@@ -17,7 +17,7 @@ def get_random_date():
     return start_date + timedelta(days=random.randint(0, delta.days))
 
 def get_random_branch_id():
-    return random.randint(1, 99)
+    return random.randint(1, 40)
 
 
 def get_random_datetime():
@@ -60,7 +60,7 @@ def get_next_available_date():
     return None  # All dates used
 
 def get_random_branch_id():
-    return random.randint(1, 99)
+    return random.randint(1, 40)
 
 def generate_footfall_summary_record():
     dt = get_next_available_date()

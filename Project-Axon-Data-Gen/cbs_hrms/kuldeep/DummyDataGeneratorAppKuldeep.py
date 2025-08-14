@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 # 1. crm_customers
 class CRMCustomer:
     def __init__(self):
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.first_name = fake.first_name()
         self.last_name = fake.last_name()
         self.email = fake.email()
@@ -104,7 +104,7 @@ class HRMSEmployee:
         self.hire_date = fake.date_this_decade()
         self.salary = round(random.uniform(25000, 120000), 2)
         self.status = random.choice(['Active', 'Inactive'])
-        self.branch_id = fake.random_int(min=1000, max=9999)
+        self.branch_id = fake.random_int(min=1, max=40)
 
     def to_dict(self) -> dict:
         return {

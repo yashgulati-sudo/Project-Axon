@@ -66,9 +66,9 @@ def generate_customer_campaign():
     enrolled_at = max(enrolled_at, datetime(datetime.today().year, 1, 1))  # Ensure it's within this year
 
     customer_campaign = {
-        "customer_campaign_id": random.randint(1, 99),
-        "customer_id": random.randint(1, 99),
-        "campaign_id": random.randint(1, 99),
+        "customer_campaign_id": random.randint(1, 40),
+        "customer_id": random.randint(1, 40),
+        "campaign_id": random.randint(1, 40),
         "enrolled_at": enrolled_at.strftime('%Y-%m-%d')
     }
     return customer_campaign

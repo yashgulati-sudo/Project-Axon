@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 # 1. crm_customers
 class CRMCustomer:
     def __init__(self):
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.first_name = fake.first_name()
         self.last_name = fake.last_name()
         self.email = fake.email()
@@ -55,7 +55,7 @@ class CRMCustomer:
 class CRMInteraction:
     def __init__(self):
         self.interaction_id = fake.random_int(min=1000, max=9999)
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.interaction_type = random.choice(['Call', 'Email', 'Meeting', 'Message'])
         self.interaction_date = fake.date_this_year()
         self.outcome = random.choice(['Successful', 'Unsuccessful'])
@@ -75,7 +75,7 @@ class CRMInteraction:
 class CRMSupportTicket:
     def __init__(self):
         self.ticket_id = fake.random_int(min=1000, max=9999)
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.issue_type = random.choice(['Technical', 'Billing', 'General Inquiry'])
         self.status = random.choice(['Open', 'Closed', 'In Progress'])
         self.created_at = fake.date_this_year()
@@ -95,7 +95,7 @@ class CRMSupportTicket:
 class CRMOpportunity:
     def __init__(self):
         self.opportunity_id = fake.random_int(min=1000, max=9999)
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.status = random.choice(['Open', 'Closed Won', 'Closed Lost'])
         self.expected_value = round(random.uniform(1000, 50000), 2)
         self.created_at = fake.date_this_year()
@@ -112,7 +112,7 @@ class CRMOpportunity:
 # 5. crm_campaigns
 class CRMCampaign:
     def __init__(self):
-        self.campaign_id = fake.random_int(min=1000, max=9999)
+        self.campaign_id = fake.random_int(min=1, max=40)
         self.name = fake.bs()
         self.start_date = fake.date_this_year()
         self.end_date = fake.date_this_year()
@@ -133,8 +133,8 @@ class CRMCampaign:
 class CRMCustomerCampaign:
     def __init__(self):
         self.customer_campaign_id = fake.random_int(min=1000, max=9999)
-        self.customer_id = fake.random_int(min=1, max=99999)
-        self.campaign_id = fake.random_int(min=1000, max=9999)
+        self.customer_id = fake.random_int(min=1, max=40)
+        self.campaign_id = fake.random_int(min=1, max=40)
         self.enrolled_at = fake.date_this_year()
 
     def to_dict(self) -> dict:
@@ -148,8 +148,8 @@ class CRMCustomerCampaign:
 # 7. crm_feedback
 class CRMFeedback:
     def __init__(self):
-        self.feedback_id = fake.random_int(min=1000, max=9999)
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.feedback_id = fake.random_int(min=1, max=40)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.rating = random.choice([1, 2, 3, 4, 5])
         self.comments = fake.text(max_nb_chars=200)
         self.submitted_at = fake.date_this_month()
@@ -167,7 +167,7 @@ class CRMFeedback:
 class CRMTransaction:
     def __init__(self):
         self.transaction_id = fake.random_int(min=1000, max=9999)
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.transaction_type = random.choice(['Deposit', 'Withdrawal', 'Transfer'])
         self.amount = round(random.uniform(10, 5000), 2)
         self.transaction_date = fake.date_this_month()
@@ -188,8 +188,8 @@ class CRMTransaction:
 # 9. erp_accounts
 class ERPAccount:
     def __init__(self):
-        self.account_id = fake.random_int(min=100000, max=999999)
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.account_id = fake.random_int(min=1, max=40)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.account_type = random.choice(['Checking', 'Savings', 'Loan', 'Credit'])
         self.balance = round(random.uniform(1000, 50000), 2)
         self.status = random.choice(['Active', 'Inactive', 'Closed'])
@@ -208,8 +208,8 @@ class ERPAccount:
 # 10. erp_transactions
 class ERPTransaction:
     def __init__(self):
-        self.transaction_id = fake.random_int(min=1000, max=9999)
-        self.account_id = fake.random_int(min=100000, max=999999)
+        self.transaction_id = fake.random_int(min=1, max=40)
+        self.account_id = fake.random_int(min=1, max=40)
         self.transaction_type = random.choice(['Deposit', 'Withdrawal', 'Transfer'])
         self.amount = round(random.uniform(10, 5000), 2)
         self.transaction_date = fake.date_this_month()
@@ -228,9 +228,9 @@ class ERPTransaction:
 # 11. erp_ledger
 class ERPLedger:
     def __init__(self):
-        self.ledger_id = fake.random_int(min=1000, max=9999)
-        self.account_id = fake.random_int(min=100000, max=999999)
-        self.transaction_id = fake.random_int(min=1000, max=9999)
+        self.ledger_id = fake.random_int(min=1, max=40)
+        self.account_id = fake.random_int(min=1, max=40)
+        self.transaction_id = fake.random_int(min=1, max=40)
         self.amount = round(random.uniform(10, 5000), 2)
         self.ledger_date = fake.date_this_year()
         self.status = random.choice(['Posted', 'Pending'])
@@ -249,7 +249,7 @@ class ERPLedger:
 class ERPInvoice:
     def __init__(self):
         self.invoice_id = fake.random_int(min=1000, max=9999)
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.amount = round(random.uniform(100, 10000), 2)
         self.due_date = fake.date_this_month()
         self.status = random.choice(['Paid', 'Unpaid'])
@@ -303,7 +303,7 @@ class ERPInventory:
 class ERPLoan:
     def __init__(self):
         self.loan_id = fake.random_int(min=1000, max=9999)
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.loan_type = random.choice(['Personal', 'Business', 'Mortgage'])
         self.amount = round(random.uniform(1000, 50000), 2)
         self.status = random.choice(['Approved', 'Rejected', 'Pending'])
@@ -321,7 +321,7 @@ class ERPLoan:
 class ERPPayment:
     def __init__(self):
         self.payment_id = fake.random_int(min=1000, max=9999)
-        self.customer_id = fake.random_int(min=1, max=99999)
+        self.customer_id = fake.random_int(min=1, max=40)
         self.amount = round(random.uniform(100, 5000), 2)
         self.payment_date = fake.date_this_month()
         self.payment_method = random.choice(['Credit Card', 'Bank Transfer', 'Cash'])
@@ -338,8 +338,8 @@ class ERPPayment:
 # 17. erp_revenue
 class ERPRevenue:
     def __init__(self):
-        self.revenue_id = fake.random_int(min=1000, max=9999)
-        self.account_id = fake.random_int(min=100000, max=999999)
+        self.revenue_id = fake.random_int(min=1, max=40)
+        self.account_id = fake.random_int(min=1, max=40)
         self.amount = round(random.uniform(10, 5000), 2)
         self.revenue_type = random.choice(['Interest', 'Fees', 'Other'])
         self.revenue_date = fake.date_this_year()
@@ -358,7 +358,7 @@ class ERPRevenue:
 # 18. hrms_employees
 class HRMSEmployee:
     def __init__(self):
-        self.employee_id = fake.random_int(min=1, max=9999)
+        self.employee_id = fake.random_int(min=1, max=40)
         self.first_name = fake.first_name()
         self.last_name = fake.last_name()
         self.email = fake.email()
@@ -403,7 +403,7 @@ class HRMSAttendance:
 class HRMSPayroll:
     def __init__(self):
         self.payroll_id = fake.random_int(min=1000, max=9999)
-        self.employee_id = fake.random_int(min=1, max=9999)
+        self.employee_id = fake.random_int(min=1, max=40)
         self.salary = round(random.uniform(30000, 120000), 2)
         self.bonus = round(random.uniform(1000, 5000), 2)
         self.deductions = round(random.uniform(100, 1000), 2)
@@ -423,7 +423,7 @@ class HRMSPayroll:
 class HRMSPerformance:
     def __init__(self):
         self.performance_id = fake.random_int(min=1000, max=9999)
-        self.employee_id = fake.random_int(min=1, max=9999)
+        self.employee_id = fake.random_int(min=1, max=40)
         self.performance_rating = random.choice([1, 2, 3, 4, 5])
         self.review_date = fake.date_this_year()
         self.comments = fake.text(max_nb_chars=150)
@@ -441,7 +441,7 @@ class HRMSPerformance:
 class HRMSLeave:
     def __init__(self):
         self.leave_id = fake.random_int(min=1000, max=9999)
-        self.employee_id = fake.random_int(min=1, max=9999)
+        self.employee_id = fake.random_int(min=1, max=40)
         self.leave_type = random.choice(['Sick', 'Vacation', 'Unpaid'])
         self.leave_start = fake.date_this_year()
         self.leave_end = fake.date_this_year()
@@ -461,7 +461,7 @@ class HRMSLeave:
 class HRMSTraining:
     def __init__(self):
         self.training_id = fake.random_int(min=1000, max=9999)
-        self.employee_id = fake.random_int(min=1, max=9999)
+        self.employee_id = fake.random_int(min=1, max=40)
         self.training_name = fake.bs()
         self.start_date = fake.date_this_year()
         self.end_date = fake.date_this_year()
@@ -499,7 +499,7 @@ class HRMSRecruitment:
 class HRMSBenefits:
     def __init__(self):
         self.benefit_id = fake.random_int(min=1000, max=9999)
-        self.employee_id = fake.random_int(min=1, max=9999)
+        self.employee_id = fake.random_int(min=1, max=40)
         self.benefit_type = random.choice(['Health Insurance', 'Retirement Plan', 'Paid Time Off', 'Stock Options'])
         self.start_date = fake.date_this_year()
         self.end_date = fake.date_this_year()
@@ -518,7 +518,7 @@ class HRMSBenefits:
 # 26. hrms_departments
 class HRMSDepartment:
     def __init__(self):
-        self.department_id = fake.random_int(min=1000, max=9999)
+        self.department_id = fake.random_int(min=1, max=40)
         self.department_name = random.choice(['Sales', 'IT', 'Operations', 'Finance', 'HR'])
         self.manager = fake.name()
         self.location = fake.city()
@@ -535,7 +535,7 @@ class HRMSDepartment:
 class HRMSTimeTracking:
     def __init__(self):
         self.time_tracking_id = fake.random_int(min=1000, max=9999)
-        self.employee_id = fake.random_int(min=1, max=9999)
+        self.employee_id = fake.random_int(min=1, max=40)
         self.date = fake.date_this_month()
         self.hours_worked = round(random.uniform(4, 10), 2)
         self.overtime_hours = round(random.uniform(0, 3), 2)

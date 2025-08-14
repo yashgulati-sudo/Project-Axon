@@ -48,9 +48,9 @@ def generate_project():
 def generate_task():
     project = generate_unique_data(generate_project, history_store, "projects")
     return {
-        "task_id": random.randint(1, 1000),
+        "task_id": random.randint(1, 40),
         "task_name": random.choice(BANKING_TASKS),
-        "branch_id": (branch_id := random.randint(1, 99)),
+        "branch_id": (branch_id := random.randint(1, 40)),
         "project_id": project["project_id"],
         "assigned_to": fake.random_int(min=1, max=100),
         "status": random.choice(["To Do", "In Progress", "Completed", "Blocked"]),
